@@ -13,9 +13,10 @@ public class Parking {
         int opcion = 0;
         float tarifaHora = 1.50f;
         int totalVehiculos = 0;
-        int totalHorasRegistradas = 0;
+        float totalHorasRegistradas = 0;
         int totalCalculosTarifa = 0;
         float importeTotalCalculado = 0f;
+        float resultado = 0;
 
         System.out.println("=================================\n" +
                 "        PARKING-DAM\n" +
@@ -57,41 +58,44 @@ public class Parking {
                     String matricula = teclado.nextLine();
 
                     System.out.print("Horas estacionadas: ");
-                    float horas = teclado.nextFloat();
+                    int horas = teclado.nextInt();
                     teclado.nextLine();
 
                     while (horas <= 0) {
                         System.out.println("Las horas deben ser mayores que 0");
                         System.out.print("Horas estacionadas: ");
-                        horas = teclado.nextFloat();
+                        horas = teclado.nextInt();
                         teclado.nextLine();
                     }
 
                     totalVehiculos++;
-                    totalHorasRegistradas += horas;
+                    resultado = sumarHoras(totalHorasRegistradas, horas);
+                    totalHorasRegistradas = (int) resultado;
                 }
 
                 System.out.println("Vehículos registrados en esta operación: " + cantidad);
                 break;
 
             case 2:
+                int horasTarifa = 0;
 
                 System.out.print("Horas para calcular la tarifa: ");
-                float horasTarifa = teclado.nextFloat();
-                teclado.nextLine(); // Limpiar búfer
+                horasTarifa = teclado.nextInt();
+                teclado.nextLine();
 
                 while (horasTarifa <= 0) {
                     System.out.println("Las horas deben ser mayores que 0");
                     System.out.print("Horas para calcular la tarifa: ");
-                    horasTarifa = teclado.nextFloat();
+                    horasTarifa = teclado.nextInt();
                     teclado.nextLine();
                 }
 
-                float importe = horasTarifa * tarifaHora;
-                totalCalculosTarifa++;
-                importeTotalCalculado += importe;
+                resultado = calcularTarifa(horasTarifa, tarifaHora);
 
-                System.out.println("Importe: " + importe + " euros");
+                totalCalculosTarifa++;
+                importeTotalCalculado += resultado;
+
+                System.out.println("Importe: " + resultado + " euros");
                 break;
 
             case 3:
@@ -101,12 +105,42 @@ public class Parking {
                 System.out.println("Cálculos de tarifas: " + totalCalculosTarifa);
                 System.out.println("Importe total calculado: " + importeTotalCalculado + " euros");
                 break;
+
+            case 4:
+                System.out.println("Gracias por utilizar PARKING DAM-PRO");
+                teclado.close();
+                break;
+
+            default:
+                System.out.println("Opción no válida");
+                break;
         }
-        // 4. Llamar a tus métodos y actualizar acumuladores.
-        // 5. Cerrar Scanner al salir.
 
         teclado.close();
     }
 
-    // Escribe aquí tus métodos.
+    /**
+     * Suma las horas registradas acumuladas.
+     *
+     * @param acumulado horas acumuladas hasta el momento
+     * @param nuevasHoras nuevas horas del vehículo actual
+     * @return total de horas acumuladas
+     */
+    public static float sumarHoras(float acumulado, float nuevasHoras) {
+        return acumulado + nuevasHoras;
+    }
+
+    /**
+     * Calcula el importe total de un estacionamiento.
+     *
+     * Multiplica el numero de horas por el precio de una hora.
+     *
+     * @param horas numero de horas de estacionamiento
+     * @param tarifaHora precio por cada hora de estacionamiento
+     * @return importe total calculado
+     */
+    public static float calcularTarifa(int horas, float tarifaHora) {
+        return horas * tarifaHora;
+    }
+
 }
