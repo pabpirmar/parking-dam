@@ -93,6 +93,14 @@ public class Parking {
 
                 System.out.println("Importe: " + importe + " euros");
                 break;
+
+            case 3:
+                System.out.println("Usuario: " + nombre);
+                System.out.println("Vehículos registrados: " + totalVehiculos);
+                System.out.println("Horas registradas: " + totalHorasRegistradas);
+                System.out.println("Cálculos de tarifas: " + totalCalculosTarifa);
+                System.out.println("Importe total calculado: " + importeTotalCalculado + " euros");
+                break;
         }
         // 4. Llamar a tus métodos y actualizar acumuladores.
         // 5. Cerrar Scanner al salir.
