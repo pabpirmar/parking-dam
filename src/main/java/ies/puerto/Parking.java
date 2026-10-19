@@ -73,6 +73,26 @@ public class Parking {
 
                 System.out.println("Vehículos registrados en esta operación: " + cantidad);
                 break;
+
+            case 2:
+
+                System.out.print("Horas para calcular la tarifa: ");
+                float horasTarifa = teclado.nextFloat();
+                teclado.nextLine(); // Limpiar búfer
+
+                while (horasTarifa <= 0) {
+                    System.out.println("Las horas deben ser mayores que 0");
+                    System.out.print("Horas para calcular la tarifa: ");
+                    horasTarifa = teclado.nextFloat();
+                    teclado.nextLine();
+                }
+
+                float importe = horasTarifa * tarifaHora;
+                totalCalculosTarifa++;
+                importeTotalCalculado += importe;
+
+                System.out.println("Importe: " + importe + " euros");
+                break;
         }
         // 4. Llamar a tus métodos y actualizar acumuladores.
         // 5. Cerrar Scanner al salir.
