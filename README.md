@@ -123,7 +123,7 @@ Este diagrama representa dos casos distintos:
 | **7** | Calcular tarifa de 5 horas | 7,50 € | Mostró 7,50 € correctamente | No | Ninguna |
 | **8** | En tarifa, introducir horas 0 y luego 3 | Rechaza 0; importe 4,50 € | Rechazó el 0 y dio 4,50 € | No | Ninguna |
 | **9** | Calcular dos tarifas positivas | Contador de cálculos = 2 | El contador marcó 2 correctamente | No | Ninguna |
-| **10** | Registrar vehículos y luego calcular una tarifa | La opción 2 no altera vehículos ni horas registradas | Los vehículos y horas se mantuvieron intactos | No | Ninguna |
+| **10** | Registrar vehículos y luego calcular una tarifa | La opción 2 no altera vehículos ni horas registradas | Al principio alteraba los tipos de datos en la suma | **Sí** | Se cambió el método de suma a tipo `float` para que encajara con la variable `resultado` |
 | **11** | Elegir opción 3 después de varias operaciones | Muestra todos los acumulados correctos | Mostró todos los acumulados bien | No | Ninguna |
 | **12** | Elegir opción 4 | Despedida y fin sin repetir menú | Mensaje de despedida y cierre limpio | No | Ninguna |
 
