@@ -35,86 +35,86 @@ public class Parking {
             opcion = teclado.nextInt();
             teclado.nextLine();
 
-        }while (opcion != 4);
+            switch (opcion) {
 
-        switch (opcion) {
-
-            case 1:
-                System.out.print("¿Cuántos vehículos quieres registrar?: ");
-                int cantidad = teclado.nextInt();
-                teclado.nextLine();
-
-                while (cantidad <= 0) {
-                    System.out.println("Debe ser un entero positivo");
+                case 1:
                     System.out.print("¿Cuántos vehículos quieres registrar?: ");
-                    cantidad = teclado.nextInt();
-                    teclado.nextLine();
-                }
-
-                for (int i = 1; i <= cantidad; i++) {
-                    System.out.println("Vehículo " + i);
-
-                    System.out.print("Matrícula: ");
-                    String matricula = teclado.nextLine();
-
-                    System.out.print("Horas estacionadas: ");
-                    int horas = teclado.nextInt();
+                    int cantidad = teclado.nextInt();
                     teclado.nextLine();
 
-                    while (horas <= 0) {
-                        System.out.println("Las horas deben ser mayores que 0");
-                        System.out.print("Horas estacionadas: ");
-                        horas = teclado.nextInt();
+                    while (cantidad <= 0) {
+                        System.out.println("Debe ser un entero positivo");
+                        System.out.print("¿Cuántos vehículos quieres registrar?: ");
+                        cantidad = teclado.nextInt();
                         teclado.nextLine();
                     }
 
-                    totalVehiculos++;
-                    resultado = sumarHoras(totalHorasRegistradas, horas);
-                    totalHorasRegistradas = (int) resultado;
-                }
+                    for (int i = 1; i <= cantidad; i++) {
+                        System.out.println("Vehículo " + i);
 
-                System.out.println("Vehículos registrados en esta operación: " + cantidad);
-                break;
+                        System.out.print("Matrícula: ");
+                        String matricula = teclado.nextLine();
 
-            case 2:
-                int horasTarifa = 0;
+                        System.out.print("Horas estacionadas: ");
+                        int horas = teclado.nextInt();
+                        teclado.nextLine();
 
-                System.out.print("Horas para calcular la tarifa: ");
-                horasTarifa = teclado.nextInt();
-                teclado.nextLine();
+                        while (horas <= 0) {
+                            System.out.println("Las horas deben ser mayores que 0");
+                            System.out.print("Horas estacionadas: ");
+                            horas = teclado.nextInt();
+                            teclado.nextLine();
+                        }
 
-                while (horasTarifa <= 0) {
-                    System.out.println("Las horas deben ser mayores que 0");
+                        totalVehiculos++;
+                        resultado = sumarHoras(totalHorasRegistradas, horas);
+                        totalHorasRegistradas = (int) resultado;
+                    }
+
+                    System.out.println("Vehículos registrados en esta operación: " + cantidad);
+                    break;
+
+                case 2:
+                    int horasTarifa = 0;
+
                     System.out.print("Horas para calcular la tarifa: ");
                     horasTarifa = teclado.nextInt();
                     teclado.nextLine();
-                }
 
-                resultado = calcularTarifa(horasTarifa, tarifaHora);
+                    while (horasTarifa <= 0) {
+                        System.out.println("Las horas deben ser mayores que 0");
+                        System.out.print("Horas para calcular la tarifa: ");
+                        horasTarifa = teclado.nextInt();
+                        teclado.nextLine();
+                    }
 
-                totalCalculosTarifa++;
-                importeTotalCalculado += resultado;
+                    resultado = calcularTarifa(horasTarifa, tarifaHora);
 
-                System.out.println("Importe: " + resultado + " euros");
-                break;
+                    totalCalculosTarifa++;
+                    importeTotalCalculado += resultado;
 
-            case 3:
-                System.out.println("Usuario: " + nombre);
-                System.out.println("Vehículos registrados: " + totalVehiculos);
-                System.out.println("Horas registradas: " + totalHorasRegistradas);
-                System.out.println("Cálculos de tarifas: " + totalCalculosTarifa);
-                System.out.println("Importe total calculado: " + importeTotalCalculado + " euros");
-                break;
+                    System.out.println("Importe: " + resultado + " euros");
+                    break;
 
-            case 4:
-                System.out.println("Gracias por utilizar PARKING DAM-PRO");
-                teclado.close();
-                break;
+                case 3:
+                    System.out.println("Usuario: " + nombre);
+                    System.out.println("Vehículos registrados: " + totalVehiculos);
+                    System.out.println("Horas registradas: " + totalHorasRegistradas);
+                    System.out.println("Cálculos de tarifas: " + totalCalculosTarifa);
+                    System.out.println("Importe total calculado: " + importeTotalCalculado + " euros");
+                    break;
 
-            default:
-                System.out.println("Opción no válida");
-                break;
-        }
+                case 4:
+                    System.out.println("Gracias por utilizar PARKING DAM-PRO");
+                    teclado.close();
+                    break;
+
+                default:
+                    System.out.println("Opción no válida");
+                    break;
+            }
+
+        } while (opcion != 4);
 
         teclado.close();
     }
