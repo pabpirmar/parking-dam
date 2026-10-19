@@ -123,7 +123,7 @@ public class Parking {
      * Suma las horas registradas acumuladas.
      *
      * @param acumulado horas acumuladas hasta el momento
-     * @param nuevasHoras nuevas horas del vehículo actual
+     * @param nuevasHoras nuevas horas del vehiculo
      * @return total de horas acumuladas
      */
     public static float sumarHoras(float acumulado, float nuevasHoras) {
