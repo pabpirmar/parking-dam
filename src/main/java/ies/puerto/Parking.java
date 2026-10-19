@@ -35,7 +35,45 @@ public class Parking {
             teclado.nextLine();
 
         }while (opcion != 4);
-        // 3. Resolver cada opción mediante switch.
+
+        switch (opcion) {
+
+            case 1:
+                System.out.print("¿Cuántos vehículos quieres registrar?: ");
+                int cantidad = teclado.nextInt();
+                teclado.nextLine();
+
+                while (cantidad <= 0) {
+                    System.out.println("Debe ser un entero positivo");
+                    System.out.print("¿Cuántos vehículos quieres registrar?: ");
+                    cantidad = teclado.nextInt();
+                    teclado.nextLine();
+                }
+
+                for (int i = 1; i <= cantidad; i++) {
+                    System.out.println("Vehículo " + i);
+
+                    System.out.print("Matrícula: ");
+                    String matricula = teclado.nextLine();
+
+                    System.out.print("Horas estacionadas: ");
+                    float horas = teclado.nextFloat();
+                    teclado.nextLine();
+
+                    while (horas <= 0) {
+                        System.out.println("Las horas deben ser mayores que 0");
+                        System.out.print("Horas estacionadas: ");
+                        horas = teclado.nextFloat();
+                        teclado.nextLine();
+                    }
+
+                    totalVehiculos++;
+                    totalHorasRegistradas += horas;
+                }
+
+                System.out.println("Vehículos registrados en esta operación: " + cantidad);
+                break;
+        }
         // 4. Llamar a tus métodos y actualizar acumuladores.
         // 5. Cerrar Scanner al salir.
 
